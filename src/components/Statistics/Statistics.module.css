@@ -1,0 +1,50 @@
+
+
+.statistics{
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 320px;
+    height: 150px;
+    margin-top: 30px;
+    margin-left: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+
+.stat_list{
+    list-style: none;
+    
+}
+
+.title{
+    font-family: 'Mochiy Pop P One', sans-serif;
+
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.stat_list{
+    display: flex;
+    justify-content: space-between;
+}
+
+.item{
+    
+}
+
+.label{
+    font-weight: bold;	
+    font-size: 20px;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.percentage{
+display: block;
+margin-top: 10px;
+    margin-left: 1px;
+    font-weight: bold;	
+    font-size: 20px;
+    font-family: 'Exo 2', sans-serif;
+}

@@ -8,6 +8,7 @@ import FriendList from "./components/FriendList/FriendList"
 import FriendListItem from "./components/FriendListItem/FriendListItem"
 import TransactionHistory from "./components/TransactionHistory/TransactionHistory";
 import Transactions from "./Data/Transactions.json"
+
 function App() {
   return (
     <div>
