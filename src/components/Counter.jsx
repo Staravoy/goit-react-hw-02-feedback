@@ -1,43 +1,48 @@
 import React from "react";
+import Statistic from "./Statistic";
+import Section from "./Section";
+import FeedbackOption from "./FeedbackOption";
+import Notification from "./Notification";
+import "./counter.css"
 
 class Counter extends React.Component {
+    static defaultProps = {
+        initialValue:  0,
+    }; 
+
     state = {
-        good: 0,
-        neutral: 0,
-        bad: 0
+        good: this.props.initialValue,
+        neutral: this.props.initialValue,
+        bad: this.props.initialValue 
     };
      
-    goodIncrease = () => {
-        this.setState(prevState => ({
-            good: prevState.good + 1,
-        }));
-    }
-    neutralIncrease = () => {
-        this.setState(prevState => ({
-            neutral: prevState.neutral + 1,
-        }));
-    }
-    badIncrease = () => {
-        this.setState(prevState => ({
-            bad: prevState.bad + 1,
-        }));
-    }
+    
+    
+    onLeaveFeedback = option => {
+    this.setState(state => ({
+      [option]: state[option] + 1,
+    }));
+  };
     render() {
+        const objKey = Object.keys(this.state);
+        const total = this.state.bad + this.state.good + this.state.neutral;
+
         return (
-            <><div className="Counter">
-                <button type="button" className="button-item" onClick={this.goodIncrease}>Good</button>
-                <button type="button" className="button-item" onClick={this.neutralIncrease}>Neutral</button>
-                <button type="button" className="button-item" onClick={this.badIncrease}>Bad</button>
-            </div>
-                <h1>Statistics</h1>
-                <div className="Statisitc">
-                    <li>Good:{this.state.good}</li>
-                    <li>Neutral:{this.state.neutral}</li>
-                    <li>Bad:{this.state.bad}</li>
-                    <li>Total:{this.state.bad + this.state.good + this.state.neutral}</li>
-                    <li>Positive feedback:{Math.round(this.state.good * 100 / (this.state.bad + this.state.good + this.state.neutral))}%</li>
-                </div></>
+            <>
+        <Section>
+                <FeedbackOption options={objKey} onLeaveFeedback={this.onLeaveFeedback} />
+                </Section>
+
+                {total === 0 ? (
+                    <Notification message="No feedback given" />
+                ) : (
+                        
+                    <Section title="Statistics">
+                        <Statistic good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} />
+                    </Section>
+                )}
+            </>
         )
     }
 }
-export default Counter
+export default Counter;
